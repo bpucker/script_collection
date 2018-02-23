@@ -14,3 +14,11 @@ python identify_RBHs.py \
 --prefix <OUTPUT_DIRECTORY_NAME> \
 --seq_type <prot|nucl> \
 --cpu <INT>
+
+Suggested citation:
+Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thaliana Accession Niederzenz-1 Displays Presence/Absence Variation and Strong Synteny'
+http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
+ 
+ 
+ 
+ 
