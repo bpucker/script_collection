@@ -20,5 +20,20 @@ Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thal
 http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
  
  
- 
- 
+sort_contigs_on_ref.py
+Whole Genome Shotgun (WGS) assembly contigs can be ordered and oriented based on an available reference sequence. This script does a placement of all given sequences based on the central position of their best BLASTn hit against the reference sequence. A new FASTA file is constructed, in which all seqeuences are saved under new systematic names (scaffold<running_number>). Association between old and new names is printed during this process and can easily be written into a documentation file.
+Requirements:
+1) Python 2.7.x (other Python 2 versions should work as well)
+2) BLAST (makeblastdb and blastn should be in PATH)
+Usage:
+python sort_contigs_on_ref.py \
+--contig_file <FULL_PATH_TO_FILE> \
+--ref_file <FULL_PATH_TO_FILE> \
+--output_dir <FULL_PATH_TO_DIR> \
+> <DOCUMENTATION_FILE>
+
+Suggested citation:
+Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thaliana Accession Niederzenz-1 Displays Presence/Absence Variation and Strong Synteny'
+http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
+
+
