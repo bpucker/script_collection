@@ -37,3 +37,14 @@ Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thal
 http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
+
+split_FASTQ.py
+Splits FASTQ file with alternating mate1 and mate2 reads of paired-end sequencing into two separate files with mate1 and mate2, respectively. Can be applied after downloading FASTQ files from the SRA via webbrowser.
+Requirements:
+1) Python 2.7.x (other Python 2 versions should work as well)
+Usage:
+python split_FASTQ.py \
+--in_file <FULL_PATH_TO_FILE>
+
+Suggested citation:
+this repository
