@@ -39,7 +39,7 @@ http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
 split_FASTQ.py
-Splits FASTQ file with alternating mate1 and mate2 reads of paired-end sequencing into two separate files with mate1 and mate2, respectively. Can be applied after downloading FASTQ files from the SRA via webbrowser.
+Splits FASTQ file with alternating mate1 and mate2 reads of paired-end sequencing into two separate files with mate1 and mate2, respectively. Can be applied after downloading FASTQ files from the SRA via webbrowser. New files will be placed next to the original file with '_1' and '_2' added to their file base name. This script can handle raw FASTQ files (.fastq) as well as gzip compressed files (.fastq.gz).
 Requirements:
 1) Python 2.7.x (other Python 2 versions should work as well)
 Usage:
@@ -48,3 +48,27 @@ python split_FASTQ.py \
 
 Suggested citation:
 this repository
+
+
+sort_vcf_by_fasta.py
+A given VCF file is sorted based on the provided FASTA file. The chromosome order and numeric positions within the chromosome sequences are taken into account to adjust the VCF file. This can be helpful during variant calling with GATK.
+Requirements:
+1) Python 2.7.x (other Python 2 versions should work as well)
+Usage:
+python sort_vcf_by_fasta.py \
+--vcf <FULL_PATH_TO_INPUT_VCF> \
+--fasta <FULL_PATH_TO_INPUT_FASTA_FILE> \
+--output <FULL_PATH_TO_OUTPUT_VCF_FILE>
+
+Suggested citation:
+this repository
+
+
+
+
+
+
+
+
+
+
