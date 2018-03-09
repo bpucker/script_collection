@@ -13,7 +13,7 @@ python identify_RBHs.py \
 --input2 <FASTA_FILE2> \
 --prefix <OUTPUT_DIRECTORY_NAME> \
 --seq_type <prot|nucl> \
---cpu <INT>
+--cpu <NUMBER_OF_CPUs_TO_USE>
 
 Suggested citation:
 Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thaliana Accession Niederzenz-1 Displays Presence/Absence Variation and Strong Synteny'
