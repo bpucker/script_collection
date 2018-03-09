@@ -2,7 +2,7 @@
 Collection of scripts to solve small bioinformatic challenges.
 
 
-#identify_RBHs.py
+# identify_RBHs.py
 
 Identification of Reciprocal Best BLAST Hits (RBHs) between to sets of sequences (protein/DNA). The scripts constructs BLAST databases and runs blastp/blastn in both directions. RBHs are identified and writen to a text file ('RBH_file.txt') in the specified output directory.
 
@@ -30,7 +30,7 @@ http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
 
-#sort_contigs_on_ref.py
+# sort_contigs_on_ref.py
 
 Whole Genome Shotgun (WGS) assembly contigs can be ordered and oriented based on an available reference sequence. This script does a placement of all given sequences based on the central position of their best BLASTn hit against the reference sequence. A new FASTA file is constructed, in which all seqeuences are saved under new systematic names (scaffold<running_number>). Association between old and new names is printed during this process and can easily be written into a documentation file.
 
@@ -55,7 +55,7 @@ http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
 
-#split_FASTQ.py
+# split_FASTQ.py
 
 Splits FASTQ file with alternating mate1 and mate2 reads of paired-end sequencing into two separate files with mate1 and mate2, respectively. Can be applied after downloading FASTQ files from the SRA via webbrowser. New files will be placed next to the original file with '_1' and '_2' added to their file base name. This script can handle raw FASTQ files (.fastq) as well as gzip compressed files (.fastq.gz).
 
@@ -77,7 +77,7 @@ this repository
 
 
 
-#sort_vcf_by_fasta.py
+# sort_vcf_by_fasta.py
 
 A given VCF file is sorted based on the provided FASTA file. The chromosome order and numeric positions within the chromosome sequences are taken into account to adjust the VCF file. This can be helpful during variant calling with GATK.
 
