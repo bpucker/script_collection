@@ -29,8 +29,7 @@ Usage:
 python sort_contigs_on_ref.py \
 --contig_file <FULL_PATH_TO_FILE> \
 --ref_file <FULL_PATH_TO_FILE> \
---output_dir <FULL_PATH_TO_DIR> \
-> <DOCUMENTATION_FILE>
+--output_dir <FULL_PATH_TO_DIR> > <DOCUMENTATION_FILE>
 
 Suggested citation:
 Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thaliana Accession Niederzenz-1 Displays Presence/Absence Variation and Strong Synteny'
