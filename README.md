@@ -121,6 +121,24 @@ http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
 
+# grep_seqs_from_fastq.py
+This script greps reads from a given FASTQ file if they match a provided sequence. It can be used to collect data for manual improvement of critical region in an assembly e.g. to extend contigs.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+
+Usage:
+
+python grep_seqs_from_fastq.py \
+--in <FULL_PATH_TO_FASTQ_FILE> \
+--out <FULL_PATH_TO_OUTPUT_FILE> \
+--seq <SEQUENCE_TO_FIND>
+
+Suggested citation:
+
+this repository
 
 
 
