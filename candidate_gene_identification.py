@@ -3,7 +3,7 @@
 ### v0.1 ###
 
 __usage__ = """
-	python BLASTp_based_gene_family_annotation.py\n
+	python candidate_gene_identification.py\n
 	--query <FULL_PATH_TO_QUERY_FILE>
 	--pep <FULL_PATH_TO_SUBJECT_PEPTIDE_FILE>
 	--prefix <FULL_PATH_TO_OUTPUT_DIRECTORY>
