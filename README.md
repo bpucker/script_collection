@@ -172,6 +172,33 @@ this repository
 
 
 
+# get_reads_from_bam.py
+This script can be used to extract paired-end reads after mapping to a reference sequence. An additional length filter can be applied to extract only read paires in which both mates have a sufficient length.
+
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+2) samtools
+3) bedtools
+
+Usage:
+
+python get_reads_from_bam.py\n
+--bam <FULL_PATH_TO_BAM>\n
+--out <FULL_PATH_TO_OUTPUT_DIR>\n
+
+optional:
+
+--min_len <MIN_READ_LENGTH>\n
+
+
+Suggested citation:
+
+this repository
+
+
 
 
 
