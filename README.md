@@ -316,3 +316,26 @@ optional:
 Suggested citation:
 
 this repository
+
+
+
+# get_translation_bottlenecks.py
+This script analyzes given protein coding sequences for condons with a rare frequency. Figures are constructed per sequence to indicate which codons could slow the translation down. There are checks to exclude sequences with ambiguity characters (Ns) as well as for the sequence length (multiple of 3).
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well) including matplotlib library
+
+Usage:
+
+python get_translational_bottlenecks.py \
+--in <FULL_PATH_TO_INPUT_FILE> \
+--codon <FULL_PATH_TO_CODON_USAGE_TABLE> \
+--out <FULL_PATH_TO_OUTPUT_DIRECTORY>
+
+
+Suggested citation:
+
+this repository
+
