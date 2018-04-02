@@ -280,13 +280,37 @@ Requirements:
 
 Usage:
 
-python find_housekeeping_genes.py
---in <FULL_PATH_TO_EXPRESSION_FILE>
+python find_housekeeping_genes.py \
+--in <FULL_PATH_TO_EXPRESSION_FILE> \
 --out <FULL_PATH__TO_OUTPUT_FILE>
 
 optional:
---anno <FULL_PATH__TO_ANNOTATION_FILE>
+--anno <FULL_PATH__TO_ANNOTATION_FILE> \
 --cutoff <MINIMAL_EXPRESSION_PER_SAMPLE(INTEGER)>
+
+
+Suggested citation:
+
+this repository
+
+
+
+# analyze_codon_usage.py
+This script analyzes the codon usage of a species based on provided protein coding sequences. Gene expression values can be included in this calculation if available. The format of a gene expression file should match the output of combine_count_tables.py: header line with different samples names, one row per gene starting with the gene name followed by expression values of the different samples.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well) including matplotlib library
+
+Usage:
+
+python analyze_codon_usage.py \
+--in <FULL_PATH_TO_INPUT_FILE> \
+--out<FULL_PATH_TO_OUTPUT_FILE>
+
+optional:
+--exp <FULL_PATH_TO_EXPRESSION_FILE>
 
 
 Suggested citation:
