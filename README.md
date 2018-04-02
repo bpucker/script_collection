@@ -268,3 +268,27 @@ Suggested citation:
 
 this repository
 
+
+
+# find_housekeeping_genes.py
+This script identifies genes with very small variation in expression across multiple samples. Suche genes could be used as reference genes for qRT-PCR experiments. The gene expression file used as input should be in the output format of combine_count_tables.py: header line with different samples names, one row per gene starting with the gene name followed by expression values of the different samples. An annotation file can be provided to add a functional description to each gene in the output file.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+
+Usage:
+
+python find_housekeeping_genes.py
+--in <FULL_PATH_TO_EXPRESSION_FILE>
+--out <FULL_PATH__TO_OUTPUT_FILE>
+
+optional:
+--anno <FULL_PATH__TO_ANNOTATION_FILE>
+--cutoff <MINIMAL_EXPRESSION_PER_SAMPLE(INTEGER)>
+
+
+Suggested citation:
+
+this repository
