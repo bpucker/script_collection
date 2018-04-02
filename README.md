@@ -220,3 +220,30 @@ Suggested citation:
 this repository
 
 
+
+
+# map_assembly_against_ref.py
+This script maps all contigs of a de novo genome sequence assembly against a reference sequence. The coverage if illustrated to enable the identification of large scale presence/absence variations.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well) including matplotlib library
+2) BLAST (blastn, makeblastdb should be in PATH)
+
+Usage:
+
+python dot_plot_heatmap.py \
+--in <FULL_PATH_TO_ASSEMBLY_FILE> \
+--ref <FULL_PATH_TO_REFERENCE_SEQUENCE> \
+--out <FULL_PATH_TO_OUTPUT_DIRECTORY>
+
+
+Suggested citation:
+
+this repository
+
+
+
+
+
