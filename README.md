@@ -201,4 +201,22 @@ this repository
 
 
 
+# FASTQ_stats.py
+This script calculates some basic statistics about a given FASTQ file or all FASTQ files in a given directory.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+
+Usage:
+
+python FASTQ_stats.py \
+--in_file <FULL_PATH_TO_FASTQ_FILE> |	--in_dir <FULL_PATH_TO_DIRECTORY>
+
+
+Suggested citation:
+
+this repository
+
 
