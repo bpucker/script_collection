@@ -141,4 +141,37 @@ Suggested citation:
 this repository
 
 
+# candidate_gene_identification.py
+This script can be used to identify candidate genes for complete pathways or gene families. A set of query protein sequences e.g. from different other species is needed for the search. Best candidates are first identified via BLASTp.
+
+optional:
+
+A phylogenetic tree is constructed to enable manual inspection of the results. This requires some external tools listed below.
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+2) BLAST (blastp, makeblastdb should be in PATH)
+optional:
+3) MAFFT
+4) pxclsq
+5) FastTree
+
+Usage:
+
+python candidate_gene_identification.py\n
+--query <FULL_PATH_TO_QUERY_FILE>\n
+--pep <FULL_PATH_TO_SUBJECT_PEPTIDE_FILE>\n
+--prefix <FULL_PATH_TO_OUTPUT_DIRECTORY>\n
+
+
+Suggested citation:
+
+this repository
+
+
+
+
+
 
