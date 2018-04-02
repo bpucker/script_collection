@@ -160,10 +160,10 @@ optional:
 
 Usage:
 
-python candidate_gene_identification.py\n
---query <FULL_PATH_TO_QUERY_FILE>\n
---pep <FULL_PATH_TO_SUBJECT_PEPTIDE_FILE>\n
---prefix <FULL_PATH_TO_OUTPUT_DIRECTORY>\n
+python candidate_gene_identification.py \
+--query <FULL_PATH_TO_QUERY_FILE> \
+--pep <FULL_PATH_TO_SUBJECT_PEPTIDE_FILE> \
+--prefix <FULL_PATH_TO_OUTPUT_DIRECTORY> \
 
 
 Suggested citation:
@@ -185,9 +185,9 @@ Requirements:
 
 Usage:
 
-python get_reads_from_bam.py\n
---bam <FULL_PATH_TO_BAM>\n
---out <FULL_PATH_TO_OUTPUT_DIR>\n
+python get_reads_from_bam.py \
+--bam <FULL_PATH_TO_BAM> \
+--out <FULL_PATH_TO_OUTPUT_DIR> \
 
 optional:
 
