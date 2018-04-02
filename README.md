@@ -163,7 +163,7 @@ Usage:
 python candidate_gene_identification.py \
 --query <FULL_PATH_TO_QUERY_FILE> \
 --pep <FULL_PATH_TO_SUBJECT_PEPTIDE_FILE> \
---prefix <FULL_PATH_TO_OUTPUT_DIRECTORY> \
+--prefix <FULL_PATH_TO_OUTPUT_DIRECTORY>
 
 
 Suggested citation:
@@ -187,7 +187,7 @@ Usage:
 
 python get_reads_from_bam.py \
 --bam <FULL_PATH_TO_BAM> \
---out <FULL_PATH_TO_OUTPUT_DIR> \
+--out <FULL_PATH_TO_OUTPUT_DIR>
 
 optional:
 
