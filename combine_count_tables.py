@@ -1,6 +1,6 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
-### v0.1 ###
+### v0.2 ###
 
 __usage__ = """
 	python combine_count_tables.py
@@ -10,7 +10,7 @@ __usage__ = """
 	--out <FULL_PATH_TO_OUTPUT_FILE>
 					"""
 
-import glob, re, sys
+import glob, re, sys, os
 from operator import itemgetter
 
 # --- end of imports --- #
@@ -140,6 +140,11 @@ def main( arguments ):
 	gff3_file = arguments[ arguments.index('--gff')+1 ]
 	prefix = arguments[ arguments.index('--out')+1 ]
 	
+	if prefix[-1] != '/':
+		prefix += "/"
+	if not os.path.exists( prefix ):
+		os.makedirs( prefix )
+	
 	input_files = []
 	for each in input_directories:
 		input_files += glob.glob( each + "*.count_table" ) + glob.glob( each + "*/*.count_table" )
@@ -147,7 +152,10 @@ def main( arguments ):
 	
 	print "number of identified count tables: " + str( len( input_files ) )
 	
-	gene_lengths = get_gene_lengths( gff3_file )
+	try:
+		gene_lengths = get_gene_lengths( gff3_file )
+	except:
+		gene_lengths = {}
 	
 	raw_counts = {}
 	TPMs = {}
@@ -175,18 +183,19 @@ def main( arguments ):
 		for gene in sorted( TPMs.keys() ):
 			out.write( "\t".join( map( str, [ gene ] + TPMs[ gene ] ) ) + '\n' )
 	
-	with open( output_FPKM_file, "w" ) as out:
-		out.write( "\t".join( [ "gene" ] + samples ) + '\n' )
-		for gene in sorted( TPMs.keys() ):
-			values = TPMs[ gene ]
-			FPKMs = []
-			try:
-				gene_len = gene_lengths[ gene ]
-				for value in values:
-					FPKMs.append( ( 1000.0*value ) / gene_len )
-				out.write( "\t".join( map( str, [ gene ] + FPKMs ) ) + '\n' )
-			except KeyError:
-				print gene
+	if len( gene_lengths.keys() ) > 0:
+		with open( output_FPKM_file, "w" ) as out:
+			out.write( "\t".join( [ "gene" ] + samples ) + '\n' )
+			for gene in sorted( TPMs.keys() ):
+				values = TPMs[ gene ]
+				FPKMs = []
+				try:
+					gene_len = gene_lengths[ gene ]
+					for value in values:
+						FPKMs.append( ( 1000.0*value ) / gene_len )
+					out.write( "\t".join( map( str, [ gene ] + FPKMs ) ) + '\n' )
+				except KeyError:
+					print gene
 
 
 if __name__ == '__main__':
