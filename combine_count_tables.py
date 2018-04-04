@@ -169,9 +169,9 @@ def main( arguments ):
 	with open( sample_names_file, "w" ) as out:
 		out.write( "\n".join( samples ) )
 	
-	output_raw_counts_file = prefix + "_raw_counts.txt"
-	output_TPM_file = prefix + "_TPMs.txt"
-	output_FPKM_file = prefix + "_FPKMs.txt"
+	output_raw_counts_file = prefix + "raw_counts.txt"
+	output_TPM_file = prefix + "TPMs.txt"
+	output_FPKM_file = prefix + "FPKMs.txt"
 	
 	with open( output_raw_counts_file, "w" ) as out:
 		out.write( "\t".join( [ "gene" ] + samples ) + '\n' )
