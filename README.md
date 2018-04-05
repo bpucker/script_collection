@@ -339,3 +339,28 @@ Suggested citation:
 
 this repository
 
+
+
+# construct_coverage_file.py
+This script calculates the coverage per position based on a given BAM file. It can be used as preprocessing for the identificaiton of zero coverage regions (ZCRs) e.g. caused by presence/absence variations or for the investigation of copy number variations (CNVs).
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well)
+2) samtools
+3) bedtools
+
+Usage:
+
+python construct_coverage_file.py \
+--in <BAM_FILE> \
+--out <OUTPUT_FILE> \
+
+optional
+--bam_is_sorted <PREVENTS_EXTRA_SORTING_OF_BAM_FILE>
+
+
+Suggested citation:
+
+this repository
