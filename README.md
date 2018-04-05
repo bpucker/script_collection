@@ -364,3 +364,28 @@ optional
 Suggested citation:
 
 this repository
+
+
+# check_contig_coverage.py
+This script calculates the average read coverage depth per contig. It utilizes functions from the 'construct_coverage_file.py' script to do so. 
+
+
+Requirements:
+
+1) Python 2.7.x (other Python 2 versions should work as well) including the matplotlib library
+2) samtools
+3) bedtools
+
+Usage:
+
+python check_contig_coverage.py \
+--bam <FULL_PATH_TO_INPUT_BAM_FILE> \
+--out <FULL_PATH_TO_OUTPUT_DIRECTORY> \
+	
+optional:
+--bam_is_sorted <PREVENTS_EXTRA_SORTING_OF_BAM_FILE>
+
+
+Suggested citation:
+
+this repository
