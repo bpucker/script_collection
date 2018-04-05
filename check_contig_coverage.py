@@ -4,7 +4,7 @@
 
 
 __usage__ = """
-	python check_contig_coverage.png
+	python check_contig_coverage.py
 	--bam <FULL_PATH_TO_INPUT_BAM_FILE>
 	--out <FULL_PATH_TO_OUTPUT_DIRECTORY>
 	
