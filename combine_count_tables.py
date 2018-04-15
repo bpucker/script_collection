@@ -81,6 +81,8 @@ def get_collapsed_exon_length( exons ):
 			final_exon_positions.append( element )
 		elif element['start'] < final_exon_positions[ -1 ]['end'] and element['end'] > final_exon_positions[ -1 ]['end']:
 			final_exon_positions[-1] = { 'start': final_exon_positions[ -1 ]['start'], 'end': element['end'] }
+		elif element['start'] > final_exon_positions[ -1 ]['end']:
+			final_exon_positions.append( element )
 	total_length = 0
 	for exon in final_exon_positions:
 		total_length += exon['end']-exon['start']
