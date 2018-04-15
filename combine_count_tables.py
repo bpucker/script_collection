@@ -103,7 +103,7 @@ def get_gene_lengths( gff3_file ):
 					ID = re.findall( "rna\d+", parts[-1] )[0]
 					parent = re.findall( "gene\d+", parts[-1] )[0]
 					rna_to_gene.update( { ID: parent } )
-				elif parts[2] in  [ "exon", "CDS" ]:
+				elif parts[2] in  [ "exon", "CDS", "five_prime_UTR", "three_prime_UTR"  ]:
 					start, end = int( parts[3] ), int( parts[4] )
 					try:
 						parent = re.findall( "rna\d+", parts[-1] )[0]
