@@ -218,5 +218,5 @@ if __name__ == '__main__':
 	
 	if '--contig_file' in sys.argv and '--ref_file' in sys.argv and '--output_dir' in sys.argv and '--species' in sys.argv:
 		main( sys.argv )	
-	
-	print "all done!"
+	else:
+		sys.exit( __usage__ )
