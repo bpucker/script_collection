@@ -341,7 +341,7 @@ def main( arguments ):
 	output_figure = prefix + "DOT_PLOT_HEATMAP.png"
 	
 	block_size = 150
-	active = False
+	active = True
 	cluster_status = False	#only change for internal use
 	
 	blast_result_file = prefix + "blast_result_file.txt"
