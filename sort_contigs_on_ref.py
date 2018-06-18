@@ -96,7 +96,7 @@ def blastn_and_sorting( contigs_file, ref_seq_file, prefix, contig_order_file, c
 				print hit['id']
 
 
-def load_contig_order_file( contig_order_file, assembly_file, pseudo_chromosome_file, species ):
+def load_contig_order_file( contig_order_file, assembly_file, pseudo_chromosome_file, species, gap_length=50 ):
 	"""! @brief load contig order information from file """
 	
 	contigs = load_sequences( assembly_file )
@@ -113,7 +113,7 @@ def load_contig_order_file( contig_order_file, assembly_file, pseudo_chromosome_
 				parts = line.strip().split('\t')
 				if parts[1] != prev_chr_name:
 					agp_information.append( { 'ID': prev_chr_name, 'contig_lengths': contig_lengths, 'contig_names': contig_names } )
-					out.write( '>' + prev_chr_name + '_' + species + '\n' + (10000*"N").join( seqs ) + '\n' )
+					out.write( '>' + prev_chr_name + '_' + species + '\n' + (gap_length*"N").join( seqs ) + '\n' )
 					prev_chr_name = parts[1]
 					contig_lengths = []
 					contig_names = []
@@ -130,7 +130,7 @@ def load_contig_order_file( contig_order_file, assembly_file, pseudo_chromosome_
 					print "ERROR: SEQ ORIENTATION UNKNOWN!"
 				line = f.readline()
 			agp_information.append( { 'ID': prev_chr_name, 'contig_lengths': contig_lengths, 'contig_names': contig_names } )
-			out.write( '>' + prev_chr_name + '_' + species + '\n' + (10000*"N").join( seqs ) + '\n' )
+			out.write( '>' + prev_chr_name + '_' + species + '\n' + (gap_length*"N").join( seqs ) + '\n' )
 	return agp_information
 
 
