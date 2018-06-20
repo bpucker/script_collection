@@ -338,6 +338,11 @@ def main( arguments ):
 	
 	prefix = arguments[  arguments.index( '--out' )+1 ]
 	
+	if prefix[-1] != '/':
+		prefix += "/"
+	if not os.path.exists( prefix  ):
+		os.makedirs( prefix )
+	
 	output_figure = prefix + "DOT_PLOT_HEATMAP.png"
 	
 	block_size = 150
