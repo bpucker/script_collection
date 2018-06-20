@@ -315,10 +315,9 @@ def final_processing( query_file_names, prefix, final_result_file ):
 def run_blastn( query_file, prefix, reference_blastn_db, result_file, cluster_status ):
 	"""! @brief check inputs and call functions """
 	
+	additional_options = ' -word_size 8 -outfmt 6 -evalue 0.01 -max_target_seqs 2'
 	if cluster_status:
 		para_jobs = 100
-		additional_options = ' -word_size 8 -outfmt 6 -evalue 0.01 -max_target_seqs 2'
-		
 		cutoff=1000000
 		
 		blast_prefix, query_file_names = produce_multiple_query_files( query_file, cutoff )	#seq length increads compared to BLAT
