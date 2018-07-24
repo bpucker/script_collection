@@ -339,3 +339,25 @@ optional:
 Suggested citation:
 
 this repository
+
+
+# seqex.py
+This script enables the extraction of small sequences from assemblies. 
+
+Requirements:
+
+1) Python 2.7.x 
+
+Usage:
+
+python seqex.py \
+--in <FULL_PATH_TO_INPUT_FILE> \
+--out <FULL_PATH_TO_OUTPUT_FILE> \
+--contig <STRING, name of contig> \
+--start <INT, start of region to extract> \
+--end <INT, end of region to extract>
+
+
+Suggested citation:
+
+this repository
