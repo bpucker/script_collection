@@ -361,3 +361,28 @@ python seqex.py \
 Suggested citation:
 
 this repository
+
+
+
+
+
+# get_translation_bottle_necks.py
+This script generates a figure for the identification of translational bottlenecks. 
+
+Requirements:
+
+1) Python 2.7.x  (other Python 2 versions should work as well) including the matplotlib library
+
+Usage:
+
+python get_translation_bottle_necks.py \
+--in <FULL_PATH_TO_INPUT_FILE> \
+--out <FULL_PATH_TO_OUTPUT_DIRECTORY> \
+--codon <FULL_PATH_TO_CODON_USAGE_TABLE> \
+--win <INT, size of sliding window for codong usage plot> 
+
+
+Suggested citation:
+
+this repository
+
