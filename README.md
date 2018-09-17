@@ -52,6 +52,10 @@ Pucker et al., 2016: 'A De Novo Genome Sequence Assembly of the Arabidopsis thal
 http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0164321
 
 
+Description:
+
+Best BLASTn hits are identified for each sequence in the contig file. Contig sequences are sorted by the middle of this BLAST alignment. Concatination of contigs to pseudochromosomes is performed with a fixed, but adjustable number of Ns between the contigs. Therefore, this number does not indicate the true physical distance of the adjacent contigs. This script was tested for sorting and anchoring of contigs of Arabidopsis thaliana and Beta vulgaris assemblies. 
+
 
 
 
