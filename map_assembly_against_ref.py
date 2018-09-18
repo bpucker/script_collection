@@ -16,7 +16,7 @@ __usage__ = """
 						bug reports and feature requests: bpucker@cebitec.uni-bielefeld.de
 						"""
 
-__reference__ = """Pucker et al., 2018: xxxxx"""
+__reference__ = """Pucker et al., 2018: https://doi.org/10.1101/407627"""
 
 import sys, glob, re, os, time, datetime, shutil
 import matplotlib.pyplot as plt
