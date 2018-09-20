@@ -390,3 +390,27 @@ Suggested citation:
 
 this repository
 
+
+
+
+
+# cov_figure.py
+This script generates a figure based on a coverage file. 
+
+Requirements:
+
+1) Python 2.7.x  (other Python 2 versions should work as well) including the matplotlib library
+
+Usage:
+
+python cov_figure.py \
+--cov <FULL_PATH_TO_COVERAGE_FILE> \
+--chr <CHROMOSOME_OF_INTEREST> \
+--start <START_POSITION> \
+--end <END_POSITION>
+
+
+Suggested citation:
+
+this repository
+
