@@ -165,7 +165,7 @@ def identify_protein_matches( parameters ):
 
 if __name__ == '__main__':
 	
-	if '--prefix' in sys.argv and '--input1' in sys.argv and '--input2' in sys.argv and '--seq_type' in sys.argv:
+	if '--prefix' in sys.argv and '--input1' in sys.argv and '--input2' in sys.argv:
 		identify_protein_matches( sys.argv )
 	else:
 		sys.exit( __usage__ )
