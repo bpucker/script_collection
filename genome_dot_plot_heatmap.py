@@ -130,20 +130,20 @@ def construct_dot_plot( self_blast_results, other_blast_results, output_figure, 
 		scale2 = y_len / float( x_len )
 	
 	# --- construction of plot --- #
-	fig, ax = plt.subplots( figsize=( 10*scale1, 10*scale2 ) )
+	fig, ax = plt.subplots( figsize=( 15*scale1, 15*scale2 ) )
 	
 	ax.set_xlim( min( x_values ), max( x_values ) )
 	ax.set_ylim( min( y_values ), max( y_values ) )
 	
-	#plotting data
-	ax.scatter( x_values, y_values, c=colors, s=1 )
-	
 	#plotting chromosome borders
 	for value in query_offsets.values():
-		ax.plot( [ min( x_values ), max( x_values ) ], [ value, value ], color="grey", linewidth=1, linestyle="--" )	#query chromosome borders
+		ax.plot( [ min( x_values ), max( x_values ) ], [ value, value ], color="grey", linewidth=1, linestyle="--", alpha=0.1 )	#query chromosome borders
 	for value in subject_offsets.values():
-		ax.plot( [ value, value ], [ min( y_values ), max( y_values ) ], color="grey", linewidth=1, linestyle="--" )	#subject/reference chromosome borders
+		ax.plot( [ value, value ], [ min( y_values ), max( y_values ) ], color="grey", linewidth=1, linestyle="--", alpha=0.1 )	#subject/reference chromosome borders
 	
+	#plotting data
+	ax.scatter( x_values, y_values, c=colors, s=1, marker=".", linewidths=0 )
+		
 	#adding scale bar
 	ax.plot( [ max( x_values )-1000000, max( x_values ) ], [ min( y_values )+1000000, min( y_values )+1000000 ], color="black" )
 	ax.text( max( x_values )-1000000, min( y_values )+1200000, "1Mbp", fontsize=2, ha="left", va="bottom" )
