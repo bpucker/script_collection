@@ -49,7 +49,7 @@ def load_results_from_BLAST_result_file( BLAST_result_file, cutoff=0.9999 ):
 	return data
 
 
-def compare_datasets( data1, data2, outputfile ):
+def compare_datasets( data1, data2, outputfile, best_score ):
 	"""! @brief compares datasets and identifies bidirectional best hits """
 	
 	seq_IDs_of_interest = []
@@ -58,7 +58,7 @@ def compare_datasets( data1, data2, outputfile ):
 	keys = data1.keys()
 	rbhs = {}
 	with open( outputfile, "w" ) as out:
-		out.write( "ID1\tID2\tstatus\n" )
+		out.write( "ID1\tID2\tstatus\tscore\n" )
 		# --- identify RBHs --- #
 		for key in keys:	#key=candidate gene
 			try:
@@ -67,7 +67,7 @@ def compare_datasets( data1, data2, outputfile ):
 					other_value = data2[ value ]	#other_value=candidate_gene_ID
 					if key == other_value:
 						counter += 1
-						out.write( key + '\t' + value + '\tRBH\n' )
+						out.write( key + '\t' + value + '\tRBH\t' + str( best_score[ key ] ) + '\n' )
 						rbhs.update( { key: None } )
 						seq_IDs_of_interest.append( value )
 				except:
@@ -81,7 +81,7 @@ def compare_datasets( data1, data2, outputfile ):
 			try:
 				rbhs[ key ]
 			except KeyError:
-				out.write( key + '\t' + data1[ key ] + '\tBBH\n' )
+				out.write( key + '\t' + data1[ key ] + '\tBBH\t' + str( best_score[ key ] ) + '\n' )
 				counter += 1
 		#print "final number of all matches: " + str( counter )
 	return seq_IDs_of_interest
@@ -105,6 +105,23 @@ def load_multiple_fasta_file( fasta_file ):
 			line = f.readline()
 		content.update( { header: seq } )
 	return content
+
+
+def  load_best_hit_score( seq_file1_blast_result_file ):
+	"""! @brief load best score per hit """
+	
+	best_score = {}
+	with open( seq_file1_blast_result_file, "r" ) as f:
+		line = f.readline()
+		while line:
+			parts = line.strip().split('\t')
+			try:
+				if best_score[ parts[0] ] < float( parts[-1] ):
+					best_score[ parts[0] ] = float( parts[-1] )
+			except KeyError:
+				best_score.update( { parts[0]: float( parts[-1] ) } )
+			line = f.readline()
+	return best_score
 
 
 def identify_protein_matches( parameters ):
@@ -160,7 +177,8 @@ def identify_protein_matches( parameters ):
 	#print "analyzing BLAST results ... please wait!"
 	data1 = load_results_from_BLAST_result_file( seq_file1_blast_result_file )
 	data2 = load_results_from_BLAST_result_file( seq_file2_blast_result_file )
-	seq_IDs_of_interest = compare_datasets( data1, data2, RBH_file )
+	best_score = load_best_hit_score( seq_file1_blast_result_file )
+	seq_IDs_of_interest = compare_datasets( data1, data2, RBH_file, best_score )
 	
 
 if __name__ == '__main__':
