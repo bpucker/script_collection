@@ -154,16 +154,16 @@ def main( parameters ):
 	
 	print "BLAST1 ... "
 	if blast_type == "nucl":
-		BLAST_command1 = "blastn -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads " + str( cpu )
+		BLAST_command1 = "blastn -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + str( cpu )
 	else:
-		BLAST_command1 = "blastp -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads " + str( cpu )
+		BLAST_command1 = "blastp -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + str( cpu )
 	os.popen( BLAST_command1 )
 	
 	print "BLAST2 ... "
 	if blast_type == "nucl":
-		BLAST_command2 = "blastn -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads 8"
+		BLAST_command2 = "blastn -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + str( cpu )
 	else:
-		BLAST_command2 = "blastp -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads 8"
+		BLAST_command2 = "blastp -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + + str( cpu )
 	os.popen( BLAST_command2 )
 	
 	
