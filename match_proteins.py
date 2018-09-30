@@ -166,11 +166,11 @@ def identify_protein_matches( parameters ):
 	
 	
 	#print "BLAST1 ... "
-	BLAST_command1 = "/vol/biotools/bin/blastp -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads " + str( cpu )
+	BLAST_command1 = "/vol/biotools/bin/blastp -query " + seq_file1 + " -db " + seq_file2_db + " -out " + seq_file1_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + str( cpu )
 	os.popen( BLAST_command1 )
 	
 	#print "BLAST2 ... "
-	BLAST_command2 = "/vol/biotools/bin/blastp -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -max_target_seqs 5 -num_threads 8"
+	BLAST_command2 = "/vol/biotools/bin/blastp -query " + seq_file2 + " -db " + seq_file1_db + " -out " + seq_file2_blast_result_file + " -outfmt 6 -evalue 0.0001 -num_threads " + str( cpu )
 	os.popen( BLAST_command2 )
 	
 	
