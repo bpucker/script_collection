@@ -61,7 +61,7 @@ def blastn_and_sorting( contigs_file, ref_seq_file, prefix, contig_order_file, c
 	os.popen( cmd )
 	
 	blastn_output_file = prefix + "blastn_output_file.txt"
-	cmd = "blastn -query " + contigs_file + " -db " + prefix+"ref_blastn_db -out " + blastn_output_file + " -outfmt 6 -evalue 0.00000001 -max_target_seqs 1 -num_threads 8" 
+	cmd = "blastn -query " + contigs_file + " -db " + prefix+"ref_blastn_db -out " + blastn_output_file + " -outfmt 6 -evalue 0.00000001 -num_threads 8" 
 	os.popen( cmd )
 	
 	best_blastn_hits = {}
