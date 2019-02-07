@@ -414,3 +414,34 @@ Suggested citation:
 
 this repository
 
+
+
+	
+
+
+
+# tree.py
+This script generates a phylogenetic tree based on a given multiple FASTA file. MAFFT is used for the alignment, pxclsq for the alingment trimming, and FastTree for the construction of the tree. FigTree (http://tree.bio.ed.ac.uk/software/figtree/) ist recommended for the manual inspection of the result. 
+
+Requirements:
+
+1) Python 2.7.x  (other Python 2 versions should work as well)
+2) MAFFT (https://mafft.cbrc.jp/alignment/software/)
+3) pxclsq (https://github.com/FePhyFoFum/phyx)
+4) FastTree (http://www.microbesonline.org/fasttree/)
+
+Usage:
+
+python tree.py
+--in <FULL_PATH_TO_INPUT_FILE> \
+--out <FULL_PATH_TO_OUTPUT_DIR> \
+	
+optional: \
+--occ <FLOAT, occupancy required per alignment column> \
+--name <STRING, prefix for final alignment file> \
+
+
+
+Suggested citation:
+
+this repository
