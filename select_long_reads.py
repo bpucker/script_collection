@@ -63,13 +63,20 @@ def main( arguments ):
 				total_seq_counter.append( len( seq )-2 )
 			line = f.readline()
 	else:	#processing FASTA
+		header = f.readline()
 		line = f.readline()
+		seq = []
 		while line:
-			seq = f.readline()
-			if len( seq ) > cut:
-				out.write( line )
-				out.write( seq )
-				total_seq_counter.append( len( seq )-2 )
+			if line[0] == ">":
+				seq = "".join( seq )
+				if len( seq ) > cut:
+					out.write( header )
+					out.write( seq + "\n" )
+					total_seq_counter.append( len( seq ) )
+				seq = []
+				header = line + ""
+			else:
+				seq.append( line.strip() )
 			line = f.readline()
 	
 	# --- reports --- #
