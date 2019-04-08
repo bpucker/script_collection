@@ -65,10 +65,8 @@ def analyze_data_and_construct_figure( cov_file, fig_file ):
 
 def construct_coverage_file( bam_file, output_file, samtools, bedtools, bam_sort_status ):
 	
-	bam_file = arguments[ arguments.index( '--in' )+1 ]
-	output_file = arguments[ arguments.index( '--out' )+1 ]
 	
-	if '--bam_is_sorted' in arguments:
+	if bam_sort_status:
 		sorted_bam_file = bam_file
 	else:
 		print "sorting BAM file ..."
