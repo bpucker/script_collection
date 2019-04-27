@@ -21,12 +21,12 @@ import sys
 def main( parameters ):
 	"""! @brief runs everything """
 
-	input_vcf_file = parameters[ parameters.index('--invcf') ]
-	output_vcf_file = parameters[ parameters.index('--outvcf') ]
+	input_vcf_file = parameters[ parameters.index('--invcf')+1 ]
+	output_vcf_file = parameters[ parameters.index('--outvcf')+1 ]
 
-	chromosome = parameters[ parameters.index('--chr') ]
-	start = int( parameters[ parameters.index('--start') ] )
-	end = int( parameters[ parameters.index('--end') ] )
+	chromosome = parameters[ parameters.index('--chr')+1 ]
+	start = int( parameters[ parameters.index('--start')+1 ] )
+	end = int( parameters[ parameters.index('--end')+1 ] )
 	
 	counter = 0
 	with open( output_vcf_file, "w" ) as out:
