@@ -1,6 +1,6 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
-### v0.1 ###
+### v0.2 ###
 
 
 __usage__ = """
@@ -38,6 +38,7 @@ def analyze_FASTQ( filename ):
 				f.readline()	#useless line
 				f.readline()	#quality line
 				line = f.readline()
+			print "number of reads: " + str( len( total_length ) )
 			total_len = sum( total_length )
 			total_gc = sum( total_GC )
 			print filename
