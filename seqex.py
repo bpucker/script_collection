@@ -1,6 +1,8 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
-### v0.2 ###
+### v0.4 ###
+
+# position adjusted to 1-based system in v0.4
 
 __usage__ = """
 	python seqex.py
@@ -9,6 +11,9 @@ __usage__ = """
 	--contig <STRING, name of contig>
 	--start <INT, start of region to extract>
 	--end <INT, end of region to extract>
+	
+	optional:
+	--revcomp <EXTRAC_REVERSE_COMPLEMENT>
 					"""
 
 import re, sys
@@ -22,13 +27,21 @@ def load_multiple_fasta_file( multiple_fasta_file ):
 	content = {}
 	
 	with open( multiple_fasta_file ) as f:
-		header = f.readline().strip()[1:].split(' ')[0]
+		header = f.readline().strip()[1:]
+		if " " in header:
+			header = header.split(' ')[0]
+			if "\t" in header:
+				header = header.split('\t')[0]
 		line = f.readline()
 		seq = ""
 		while line:
 			if line[0] == '>':
 				content.update( { header: seq } )
-				header = line.strip()[1:].split(' ')[0]
+				header = line.strip()[1:]
+				if " " in header:
+					header = header.split(' ')[0]
+					if "\t" in header:
+						header = header.split('\t')[0]
 				seq = ""
 			else:
 				seq += line.strip()
@@ -53,24 +66,37 @@ def get_seq_part_from_assembly( content, contig_name, start, end ):
 			return content[ contig_name ][ start:end ], start, end
 
 
-def collect_seq_parts( data, outputfile, content, flank_len ):
+def revcomp( seq ):
+	"""! @brief construct reverse complement of sequence """
+	
+	new_seq = []
+	
+	bases = { 'a':'t', 't':'a', 'c':'g', 'g':'c', 'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C' }
+	for nt in seq:
+		try:
+			new_seq.append( bases[nt] )
+		except:
+			new_seq.append( 'n' )
+	return ''.join( new_seq[::-1] )
+
+
+def collect_seq_parts( data, outputfile, content, flank_len, revcomp_state ):
 	"""! @brief write extracted seqs to file """
 	
 	with open( outputfile, "w" ) as out:
 		for each in data:
 			try:
-				l_seq, l_start, l_end = get_seq_part_from_assembly( content, each['contig_name'], each['start']-flank_len, each['start'] )	#left is always upstream!!
-				m_seq, m_start, m_end = get_seq_part_from_assembly( content, each['contig_name'], each['start'], each['end']+1 )
-				r_seq, r_start, r_end = get_seq_part_from_assembly( content, each['contig_name'], each['end']+1, each['end']+flank_len+1 )		#right is always downstream!!
+				l_seq, l_start, l_end = get_seq_part_from_assembly( content, each['contig_name'], each['start']-flank_len, each['start']-1 )	#left is always upstream!!
+				m_seq, m_start, m_end = get_seq_part_from_assembly( content, each['contig_name'], each['start']-1, each['end'] )
+				r_seq, r_start, r_end = get_seq_part_from_assembly( content, each['contig_name'], each['end'], each['end']+flank_len+1 )		#right is always downstream!!
 				out.write( '>' + each['contig_name']  +  '_' + str( l_start ) + '_' + str( r_end ) + '\n'  )
 				seq = l_seq.lower() + m_seq.upper() + r_seq.lower()		#sequence of interest is highlighted by upper case
-				while True:
-					if len( seq ) > 80:
-						out.write( seq[:81] + '\n' )
-						seq = seq[81:]
-					else:
-						out.write( seq + '\n' )
-						break
+				if revcomp_state:
+					seq = revcomp( seq )
+				n=80
+				chunks = [ seq[i:i+n] for i in range(0, len(seq), n)]
+				for chunk in chunks:
+					out.write( chunk + '\n' )
 			except:
 				print "failed to collect contig information: " + str( each )
 
@@ -84,16 +110,20 @@ def main( arguments ):
 	start = int( arguments[ arguments.index('--start')+1 ] )
 	end = int( arguments[ arguments.index('--end')+1 ] )
 	
+	if "--revcomp" in arguments:
+		revcomp_state = True
+	else:
+		revcomp_state = False
+	
 	# --- execution of analysis --- #
 	content = load_multiple_fasta_file( assembly_file )
     
 	flank_len = 500
 	
-	collect_seq_parts( [ { 'contig_name': contig, 'start': start, 'end': end } ], outputfile, content, flank_len )
+	collect_seq_parts( [ { 'contig_name': contig, 'start': start, 'end': end } ], outputfile, content, flank_len, revcomp_state )
 
 
-if __name__ == "__main__":
-	if '--in' in sys.argv and '--out' in sys.argv and '--contig' in sys.argv and '--start' in sys.argv and '--end' in sys.argv:
-		main( sys.argv )
-	else:
-		sys.exit( __usage__ )
+if '--in' in sys.argv and '--out' in sys.argv and '--contig' in sys.argv and '--start' in sys.argv and '--end' in sys.argv:
+	main( sys.argv )
+else:
+	sys.exit( __usage__ )
