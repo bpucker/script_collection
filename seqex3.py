@@ -5,7 +5,7 @@
 # position adjusted to 1-based system in v0.4
 
 __usage__ = """
-	python seqex3.py
+	python3 seqex3.py
 	--in <FULL_PATH_TO_INPUT_FILE>
 	--out <FULL_PATH_TO_OUTPUT_FILE>
 	--contig <STRING, name of contig>
