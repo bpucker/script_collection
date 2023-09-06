@@ -69,7 +69,7 @@ def main( arguments ):
 	length_cutoff_status = False
 	if '--min_len' in arguments:
 		length_cutoff_status = True
-		min_len = arguments[ arguments.index('--min_len')+1 ]
+		min_len = int( arguments[ arguments.index('--min_len')+1 ] )
 	
 	cpu = 8
 	samtools_path = "samtools"
